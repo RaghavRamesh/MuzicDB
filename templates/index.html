@@ -1,31 +1,82 @@
-<html>
-	<head>
-		<title>Admin Panel</title>
-		<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
-	</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-	<body>
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span2" id="nav">
-					<h4>Navigation:</h4><br>
-					<ul>
-						{% block nav %}{% endblock %}
-						<li> <a href="{{url_for('admin')}}">Home</a></li>
-						<li> <a href="{{url_for('users')}}">Users</a></li>
-						<li> <a href="{{url_for('transactions')}}">User Transactions</a></li>
-						<li> <a href="{{url_for('cronjobs')}}">Cronjobs</a></li>
-						<li> <a href="{{url_for('emails')}}">E-mails</a></li>
-						<li> <a href="{{url_for('unsubscribes')}}">Unsubscribes</a></li>
-					</ul>	
-				</div>
-				<div class="span10" id="content">
-					{% block body %}
-						<h2>Admin Panel</h2>
-						This is the new Admin Panel!
-					{% endblock %}
-				</div>
-			</div>
-		</div>
-	</body>
+    <title>Navbar Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="../static/css/navbar.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">MuzicDB</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Songs</a></li>
+              <li><a href="#">Albums</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">My Songs</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="./">Home</a></li>
+              
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div>
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>HELLO</h1>
+        <p>This will be our home page</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">Browse music &raquo;</a>
+        </p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+  </body>
 </html>
