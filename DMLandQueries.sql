@@ -17,11 +17,19 @@
 #DML
 #8. Add a user
 INSERT INTO user VALUES('John Crew', 'john@crew.com', 'bigjohncrew'); 
+INSERT INTO user VALUES('John', 'john@j.com', 'bigjohn');
 #9. Delete a user
+DELETE FROM user
+WHERE name='John';
 
+DELETE FROM user WHERE email='john@crew.com';
 #10. Edit a user
+UPDATE user
+SET email='johncrew@gmail.com'
+WHERE email='john@crew.com';
 
 #11. Add an album
+INSERT INTO album VALUES('Appetite for Destruction', '123');
 
 #12. Delete an album
 

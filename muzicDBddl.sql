@@ -32,7 +32,7 @@ CREATE TABLE album (
 );
 
 CREATE TABLE artist (
-	artistName VARCHAR(64), NOT NULL
+	artistName VARCHAR(64) NOT NULL,
 	id VARCHAR(32)		PRIMARY KEY
 );
 
