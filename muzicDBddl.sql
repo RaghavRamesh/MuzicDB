@@ -1,4 +1,4 @@
-/*CS2102 Databases Project 
+ /*CS2102 Databases Project 
 * 
 * muzicDBddl.sql 
 * SQL DDL Statements
@@ -39,7 +39,7 @@ CREATE TABLE artist (
 CREATE TABLE user (
 	name VARCHAR(64),
 	email VARCHAR(64)		PRIMARY KEY,
-	password VARCHAR(32),
+	password VARCHAR(32)
 );
 
 CREATE TABLE song_purchase (
