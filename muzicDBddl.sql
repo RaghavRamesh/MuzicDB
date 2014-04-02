@@ -1,4 +1,4 @@
- /*CS2102 Databases Project 
+  /*CS2102 Databases Project 
 * 
 * muzicDBddl.sql 
 * SQL DDL Statements
@@ -9,18 +9,10 @@
 *
 */
 
-CREATE TABLE song (
-	name VARCHAR(64),		#song name
-	title VARCHAR(64),		#album title
-	artistID VARCHAR(32),
-
-	composer VARCHAR(64),   #asd ad
-	genre VARCHAR(64),
-	length INTEGER,		#this will be in seconds
-	PRIMARY KEY (name, title, artistID),
-	FOREIGN KEY (title, artistID) REFERENCES album(title, artistID) ON DELETE RESTRICT ON UPDATE CASCADE,
-	FOREIGN KEY (artistID) REFERENCES artist(id) ON DELETE RESTRICT ON UPDATE CASCADE 
-);                #no pri key only in ER diag, in SQL all tables will have pri key! 
+CREATE TABLE artist (
+	artistName VARCHAR(64) NOT NULL,
+	id VARCHAR(32)		PRIMARY KEY
+);
 
 CREATE TABLE album (
 	title VARCHAR(64), 
@@ -31,10 +23,18 @@ CREATE TABLE album (
 	/* weak entity has no primary key */
 );
 
-CREATE TABLE artist (
-	artistName VARCHAR(64) NOT NULL,
-	id VARCHAR(32)		PRIMARY KEY
-);
+CREATE TABLE song (
+	name VARCHAR(64),		#song name
+	title VARCHAR(64),		#album title
+	artistID VARCHAR(32),
+
+	composer VARCHAR(64),   #asd ad
+	genre VARCHAR(64),
+	length INTEGER,			#this will be in seconds
+	PRIMARY KEY (name, title, artistID),
+	FOREIGN KEY (title, artistID) REFERENCES album(title, artistID) ON DELETE RESTRICT ON UPDATE CASCADE,
+	FOREIGN KEY (artistID) REFERENCES artist(id) ON DELETE RESTRICT ON UPDATE CASCADE 
+);                #no pri key only in ER diag, in SQL all tables will have pri key! 
 
 CREATE TABLE user (
 	name VARCHAR(64),
