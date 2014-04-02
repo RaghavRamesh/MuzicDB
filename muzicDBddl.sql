@@ -16,7 +16,7 @@ CREATE TABLE song (
 
 	composer VARCHAR(64),   #asd ad
 	genre VARCHAR(64),
-	length INTEGER			#this will be in seconds
+	length INTEGER,		#this will be in seconds
 	PRIMARY KEY (name, title, artistID),
 	FOREIGN KEY (title, artistID) REFERENCES album(title, artistID) ON DELETE RESTRICT ON UPDATE CASCADE,
 	FOREIGN KEY (artistID) REFERENCES artist(id) ON DELETE RESTRICT ON UPDATE CASCADE 
