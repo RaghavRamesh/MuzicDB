@@ -64,3 +64,16 @@ CREATE TABLE album_purchase (
 	FOREIGN KEY (title, artistID) REFERENCES album(title, artistID) ON UPDATE CASCADE ON DELETE RESTRICT,
 	FOREIGN KEY (email) REFERENCES user(email) ON UPDATE CASCADE ON DELETE RESTRICT
 );
+
+/*****INSERTING SOME OF BRYAN'S DATA*******/
+
+#Insert some artists
+INSERT INTO artist(artistName, id) VALUES('Regina Spektor', '001');
+INSERT INTO artist(artistName, id) VALUES('Capital Cities', '002');
+INSERT INTO artist(artistName, id) VALUES('Tensnake', '003');
+INSERT INTO artist(artistName, id) VALUES('2NE1', '004');
+INSERT INTO artist(artistName, id) VALUES('Yiruma', '005');
+INSERT INTO artist(artistName, id) VALUES('Skrillex', '006');
+INSERT INTO artist(artistName, id) VALUES('Jon McLaughlin', '007');
+INSERT INTO artist(artistName, id) VALUES('Fire Away', '008');
+INSERT INTO artist(artistName, id) VALUES('Yngwie J. Malmsteen', '009');
