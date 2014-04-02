@@ -87,3 +87,43 @@ INSERT INTO album(title, artistID) VALUES('Recess','006');
 INSERT INTO album(title, artistID) VALUES('Holding My Breath','007');
 INSERT INTO album(title, artistID) VALUES('The Greatest Hits - EP - Single','008');
 INSERT INTO album(title, artistID) VALUES('Spellbound','009');
+
+#Insert some songs, up to the first one by Yngwie J. Malmsteen
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('Kangaroo Court', 'In a Tidal Wave of Mystery', '002', 'Capital Cities', 'Alternative', 180);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('I Sold My Bed, But Not My Stereo', 'In a Tidal Wave of Mystery', '002', 'Capital Cities', 'Alternative', 183);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('Love Sublime', 'Glow', '003', 'Tensnake', 'Dance', 192);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('Ten Minutes', 'Glow', '003', 'Tensnake', 'Dance', 192);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+  VALUES('Come Back Home', 'Crush', '004', '2NE1', 'Pop', 232);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('River Flows in You', 'Healing Piano', '005', 'Yiruma', 'New Age', 184);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('May Be', 'Healing Piano', '005', 'Yiruma', 'New Age', 184);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('Silver Line', 'Stay In Memory', '005', 'Yiruma', 'New Age', 194);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('Recess', 'Recess', '006', 'Skrillex', 'Dance', 170);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('Fire Away', 'Recess', '006', 'Skrillex', 'Dance', 200);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('Fire Away', 'Holding My Breath', '007', 'Jon McLaughlin', 'Pop', 194);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('The Coast', 'The Greatest Hits - EP - Single', '008', 'Fire Away', 'Pop', 180);
+
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('Electric Duet', 'Spellbound', '009', 'Yngwie J. Malmsteen', 'Rock', 220);
