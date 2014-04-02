@@ -1,5 +1,5 @@
 #Queries
-#1. Search music by album title
+#1. Search music by album title. TESTED
 /*Notice the usage of where before group by,
  * this is a mySQL thing, maybe mention that in
  * the report.
@@ -10,40 +10,40 @@ WHERE UPPER(s.title) LIKE UPPER('%php_search_query%')             #Note: the % s
       AND a.id = s.artistID                                       #      padding, so you can search for a string
 GROUP BY s.title, a.artistName;                                   #      that occurs in the middle of a word for example.
 
-#2. Search music by song title. Ignores case 
+#2. Search music by song title. Ignores case. TESTED
 SELECT s.name AS 'Song Title', a.artistName AS 'Artist', s.title AS 'Album Name',
        s.composer, s.genre, s.length
 FROM song s, artist a
 WHERE UPPER(s.name) LIKE UPPER('%php_search_query%')
       AND a.id = s.artistID;
 
-#3. Search music by artist name
+#3. Search music by artist name. TESTED
 SELECT a.artistName AS 'Artist'
 FROM artist a
 WHERE UPPER(a.artistName) LIKE UPPER('%ns%')
 GROUP BY a.artistName, a.id;
 
-#4. Search music by composer name
+#4. Search music by composer name. TESTED
 SELECT s.name AS 'Song Title', a.artistName AS 'Artist', s.title AS 'Album Name',
        s.composer, s.genre, s.length
 FROM song s, artist a
 WHERE UPPER(s.composer) LIKE UPPER('%php_search_query%')
       AND a.id = s.artistID;
 
-#5. Search music by genre
+#5. Search music by genre. TESTED
 SELECT s.name AS 'Song Title', a.artistName AS 'Artist', s.title AS 'Album Name',
        s.composer, s.genre, s.length
 FROM song s, artist a
 WHERE UPPER(s.genre) LIKE UPPER('%php_search_query%')
       AND a.id = s.artistID;
 
-#6. Find all songs
+#6. Find all songs. TESTED
 SELECT s.name AS 'Song Title', a.artistName AS 'Artist', s.title AS 'Album Name',
        s.composer, s.genre, s.length
 FROM song s, artist a
 WHERE a.id = s.artistID;
 
-#7. Find all albums
+#7. Find all albums. TESTED.
 SELECT s.title AS 'Album Name', a.artistName AS 'Artist'
 FROM song s, artist a
 WHERE a.id = s.artistID
@@ -55,9 +55,6 @@ GROUP BY s.title, a.artistName;
 INSERT INTO user VALUES('John Crew', 'john@crew.com', 'bigjohncrew'); 
 INSERT INTO user VALUES('John', 'john@j.com', 'bigjohn');
 #9. Delete a user
-DELETE FROM user
-WHERE name='John';
-
 DELETE FROM user WHERE email='john@crew.com';
 #10. Edit a user
 UPDATE user
@@ -67,7 +64,14 @@ WHERE email='john@crew.com';
 #11. Add an album
 INSERT INTO album VALUES('Appetite for Destruction', '123');
 
-#12. Delete an album
+#12. Delete an album. TESTED
+DELETE FROM album
+WHERE NOT EXISTS (
+      SELECT *
+      FROM artist
+      WHERE artist.id <> album.artistID
+      AND artist.artistName = 'Yiruma')
+AND album.title = 'Healing Piano';
 
 #13. Edit an album
 
