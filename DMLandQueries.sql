@@ -1,17 +1,53 @@
 #Queries
 #1. Search music by album title
+/*Notice the usage of where before group by,
+ * this is a mySQL thing, maybe mention that in
+ * the report.
+ */
+SELECT s.title AS 'Album Name', a.artistName AS 'Artist'
+FROM song s, artist a
+WHERE UPPER(s.title) LIKE UPPER('%php_search_query%')
+      AND a.id = s.artistID
+GROUP BY s.title, a.artistName;
 
-#2. Search music by song title
+#2. Search music by song title. Ignores case 
+SELECT s.name AS 'Song Title', a.artistName AS 'Artist', s.title AS 'Album Name',
+       s.composer, s.genre, s.length
+FROM song s, artist a
+WHERE UPPER(s.name) LIKE UPPER('%php_search_query%')
+      AND a.id = s.artistID;
 
 #3. Search music by artist name
+SELECT a.artistName AS 'Artist'
+FROM artist a
+WHERE UPPER(a.artistName) LIKE UPPER('%ns%')
+GROUP BY a.artistName, a.id;
 
 #4. Search music by composer name
+SELECT s.name AS 'Song Title', a.artistName AS 'Artist', s.title AS 'Album Name',
+       s.composer, s.genre, s.length
+FROM song s, artist a
+WHERE UPPER(s.composer) LIKE UPPER('%php_search_query%')
+      AND a.id = s.artistID;
 
 #5. Search music by genre
+SELECT s.name AS 'Song Title', a.artistName AS 'Artist', s.title AS 'Album Name',
+       s.composer, s.genre, s.length
+FROM song s, artist a
+WHERE UPPER(s.genre) LIKE UPPER('%php_search_query%')
+      AND a.id = s.artistID;
 
 #6. Find all songs
+SELECT s.name AS 'Song Title', a.artistName AS 'Artist', s.title AS 'Album Name',
+       s.composer, s.genre, s.length
+FROM song s, artist a
+WHERE a.id = s.artistID;
 
 #7. Find all albums
+SELECT s.title AS 'Album Name', a.artistName AS 'Artist'
+FROM song s, artist a
+WHERE a.id = s.artistID
+GROUP BY s.title, a.artistName;
 
 
 #DML
