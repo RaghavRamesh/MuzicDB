@@ -77,3 +77,13 @@ INSERT INTO artist(artistName, id) VALUES('Skrillex', '006');
 INSERT INTO artist(artistName, id) VALUES('Jon McLaughlin', '007');
 INSERT INTO artist(artistName, id) VALUES('Fire Away', '008');
 INSERT INTO artist(artistName, id) VALUES('Yngwie J. Malmsteen', '009');
+
+INSERT INTO album(title, artistID) VALUES('In a Tidal Wave of Mystery','002');
+INSERT INTO album(title, artistID) VALUES('Glow','003');
+INSERT INTO album(title, artistID) VALUES('Crush','004');
+INSERT INTO album(title, artistID) VALUES('Healing Piano','005');
+INSERT INTO album(title, artistID) VALUES('Stay In Memory','005');
+INSERT INTO album(title, artistID) VALUES('Recess','006');
+INSERT INTO album(title, artistID) VALUES('Holding My Breath','007');
+INSERT INTO album(title, artistID) VALUES('The Greatest Hits - EP - Single','008');
+INSERT INTO album(title, artistID) VALUES('Spellbound','009');
