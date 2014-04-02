@@ -6,9 +6,9 @@
  */
 SELECT s.title AS 'Album Name', a.artistName AS 'Artist'
 FROM song s, artist a
-WHERE UPPER(s.title) LIKE UPPER('%php_search_query%')
-      AND a.id = s.artistID
-GROUP BY s.title, a.artistName;
+WHERE UPPER(s.title) LIKE UPPER('%php_search_query%')             #Note: the % signs are at the front and back for
+      AND a.id = s.artistID                                       #      padding, so you can search for a string
+GROUP BY s.title, a.artistName;                                   #      that occurs in the middle of a word for example.
 
 #2. Search music by song title. Ignores case 
 SELECT s.name AS 'Song Title', a.artistName AS 'Artist', s.title AS 'Album Name',
