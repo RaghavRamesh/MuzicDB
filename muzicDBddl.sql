@@ -1,14 +1,14 @@
   /*CS2102 Databases Project 
 * 
 * muzicDBddl.sql 
-* SQL DDL Statements
+* SQL DDL Statements & DML Statements
 * for MuzicDB
 * Done by: Bryan Chu, Raghav, Henry, Aaron, Judan
 *
 *
 *
 */
-
+#DDL
 CREATE TABLE artist (
 	artistName VARCHAR(64) NOT NULL,
 	id VARCHAR(32)		PRIMARY KEY
@@ -28,7 +28,7 @@ CREATE TABLE song (
 	title VARCHAR(64),		#album title
 	artistID VARCHAR(32),
 
-	composer VARCHAR(64),   #asd ad
+	composer VARCHAR(64),   
 	genre VARCHAR(64),
 	length INTEGER,			#this will be in seconds
 	PRIMARY KEY (name, title, artistID),
@@ -37,7 +37,7 @@ CREATE TABLE song (
 );                #no pri key only in ER diag, in SQL all tables will have pri key! 
 
 CREATE TABLE user (
-	name VARCHAR(64),
+	name VARCHAR(64),		NOT NULL UNIQUE 
 	email VARCHAR(64)		PRIMARY KEY,
 	password VARCHAR(32)
 );
@@ -50,7 +50,7 @@ CREATE TABLE song_purchase (
 	email VARCHAR(64),
 
 	PRIMARY KEY (name, title, artistID, email),
-	FOREIGN KEY (name, title, artistID) REFERENCES song(name, title, artistID),
+	FOREIGN KEY (name, title, artistID) REFERENCES song(name, title, artistID) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (email) REFERENCES user(email) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
@@ -66,6 +66,7 @@ CREATE TABLE album_purchase (
 );
 
 /*****INSERTING SOME OF BRYAN'S DATA*******/
+#DML
 
 #Insert some artists
 INSERT INTO artist(artistName, id) VALUES('Regina Spektor', '001');
