@@ -66,17 +66,39 @@ INSERT INTO album VALUES('Appetite for Destruction', '123');
 
 #12. Delete an album. TESTED
 DELETE FROM album
-WHERE NOT EXISTS (
+WHERE EXISTS (
       SELECT *
       FROM artist
-      WHERE artist.id <> album.artistID
+      WHERE artist.id = album.artistID
       AND artist.artistName = 'Yiruma')
 AND album.title = 'Healing Piano';
 
 #13. Edit an album
+UPDATE album al
+SET al.title = 'new_name'
+WHERE EXISTS (
+      SELECT *
+      FROM artist ar
+      WHERE ar.artistName = '2NE1'
+      AND ar.id = al.artistID)
+AND al.title = 'Crush';
 
-#14. Add a song
+#14. Add a song (assuming the album and artist already exist)
+INSERT INTO song(name, title, artistID, composer, genre, length)
+VALUES('Fire Away', 'Holding My Breath', '007', 'Jon McLaughlin', 'Pop', 194);
 
 #15. Delete a song
+DELETE FROM song
+WHERE EXISTS (
+    SELECT *
+    FROM artist, album
+    WHERE artist.id = album.artistID
+    AND album.title = song.title
+    AND artist.artistName = 'Capital Cities'
+    AND album.title = 'In a Tidal Wave of Mystery')
+AND song.name = 'Kangaroo Court';
 
 #16. Edit a song
+UPDATE song s
+SET s.name = 'Go Back Home'
+WHERE s.name = 'Come Back Home';
