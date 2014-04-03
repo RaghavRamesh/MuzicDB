@@ -19,7 +19,7 @@ CREATE TABLE album (
 	artistID VARCHAR(32),
 
 	PRIMARY KEY (title, artistID),
-	FOREIGN KEY (artistID) REFERENCES artist(id) ON DELETE RESTRICT ON UPDATE CASCADE
+	FOREIGN KEY (artistID) REFERENCES artist(id) ON DELETE CASCADE ON UPDATE CASCADE
 	/* weak entity has no primary key */
 );
 
@@ -32,8 +32,8 @@ CREATE TABLE song (
 	genre VARCHAR(64),
 	length INTEGER,			#this will be in seconds
 	PRIMARY KEY (name, title, artistID),
-	FOREIGN KEY (title, artistID) REFERENCES album(title, artistID) ON DELETE RESTRICT ON UPDATE CASCADE,
-	FOREIGN KEY (artistID) REFERENCES artist(id) ON DELETE RESTRICT ON UPDATE CASCADE 
+	FOREIGN KEY (title, artistID) REFERENCES album(title, artistID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (artistID) REFERENCES artist(id) ON DELETE CASCADE ON UPDATE CASCADE 
 );                #no pri key only in ER diag, in SQL all tables will have pri key! 
 
 CREATE TABLE user (
@@ -51,7 +51,7 @@ CREATE TABLE song_purchase (
 
 	PRIMARY KEY (name, title, artistID, email),
 	FOREIGN KEY (name, title, artistID) REFERENCES song(name, title, artistID),
-	FOREIGN KEY (email) REFERENCES user(email) ON UPDATE CASCADE ON DELETE RESTRICT
+	FOREIGN KEY (email) REFERENCES user(email) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE album_purchase (
@@ -61,8 +61,8 @@ CREATE TABLE album_purchase (
 	email VARCHAR(64),
 
 	PRIMARY KEY (title, artistID, email),
-	FOREIGN KEY (title, artistID) REFERENCES album(title, artistID) ON UPDATE CASCADE ON DELETE RESTRICT,
-	FOREIGN KEY (email) REFERENCES user(email) ON UPDATE CASCADE ON DELETE RESTRICT
+	FOREIGN KEY (title, artistID) REFERENCES album(title, artistID) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (email) REFERENCES user(email) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 /*****INSERTING SOME OF BRYAN'S DATA*******/
