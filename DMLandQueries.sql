@@ -51,6 +51,8 @@ GROUP BY s.title, a.artistName;
 
 
 #DML
+
+#THE THREE USER DMLS:
 #8. Add a user
 INSERT INTO user VALUES('John Crew', 'john@crew.com', 'bigjohncrew'); 
 INSERT INTO user VALUES('John', 'john@j.com', 'bigjohn');
@@ -61,10 +63,25 @@ UPDATE user
 SET email='johncrew@gmail.com'
 WHERE email='john@crew.com';
 
-#11. Add an album
-INSERT INTO album VALUES('Appetite for Destruction', '123');
+#THE THREE ARTIST DMLs:
+#11. Add an artist
+INSERT INTO artist(artistName, id) VALUES('Regina Spektor', '001');
+INSERT INTO artist(artistName, id) VALUES('Yngwie J. Malmsteen', '009');
+#12. Delete an artist
+DELETE FROM artist
+WHERE artistName='Yiruma';
 
-#12. Delete an album. TESTED
+DELETE FROM artist
+WHERE artistName='Skrillex';
+#13. Edit an artist
+UPDATE artist
+SET artistName='SKRLX'
+WHERE artistName='Skrillex';
+
+#THE THREE ALBUM DMLs:
+#14. Add an album
+INSERT INTO album VALUES('Appetite for Destruction', '123');
+#15. Delete an album. TESTED
 DELETE FROM album
 WHERE EXISTS (
       SELECT *
@@ -72,8 +89,7 @@ WHERE EXISTS (
       WHERE artist.id = album.artistID
       AND artist.artistName = 'Yiruma')
 AND album.title = 'Healing Piano';
-
-#13. Edit an album
+#16. Edit an album
 UPDATE album al
 SET al.title = 'new_name'
 WHERE EXISTS (
@@ -83,11 +99,11 @@ WHERE EXISTS (
       AND ar.id = al.artistID)
 AND al.title = 'Crush';
 
-#14. Add a song (assuming the album and artist already exist)
+#THE THREE SONG DMLs:
+#17. Add a song (assuming the album and artist already exist)
 INSERT INTO song(name, title, artistID, composer, genre, length)
 VALUES('Fire Away', 'Holding My Breath', '007', 'Jon McLaughlin', 'Pop', 194);
-
-#15. Delete a song
+#18. Delete a song
 DELETE FROM song
 WHERE EXISTS (
     SELECT *
@@ -97,8 +113,7 @@ WHERE EXISTS (
     AND artist.artistName = 'Capital Cities'
     AND album.title = 'In a Tidal Wave of Mystery')
 AND song.name = 'Kangaroo Court';
-
-#16. Edit a song
+#19. Edit a song
 UPDATE song s
 SET s.name = 'Go Back Home'
 WHERE s.name = 'Come Back Home';

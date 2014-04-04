@@ -10,7 +10,7 @@
 */
 #DDL
 CREATE TABLE artist (
-	artistName VARCHAR(64) NOT NULL,
+	artistName VARCHAR(64) NOT NULL UNIQUE,
 	id VARCHAR(32)		PRIMARY KEY
 );
 
