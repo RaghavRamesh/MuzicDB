@@ -18,7 +18,7 @@
     // $sql="SELECT * FROM $tbl_name WHERE username='$myusername' and password='$encrypted_mypassword'";
     // $result=mysql_query($sql);
     
-    $query = "SELECT * FROM secure_login WHERE username = '$myusername' AND password = '$mypassword'";
+    $query = "SELECT * FROM user WHERE email = '$myusername' AND password = '$mypassword'";
     $result = $mysqli->query($query);
     $count = $result->num_rows;
 
@@ -34,7 +34,7 @@
         $_SESSION['CurrentUser'] = $myusername;
         echo $_SESSION['CurrentUser'];
         if ($myusername == 'admin@admin.com') {
-            header("location:adminSuccessful.html");    
+            header("location:manage.php");    
         } else {
             header("location:home.php");
         }

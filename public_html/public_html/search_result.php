@@ -1,23 +1,21 @@
 <?php
 	session_start();
-	if (!isset($_SESSION['CurrentUser'])) { 
+    if (!(isset($_SESSION['CurrentUser']) && $_SESSION['CurrentUser'] != 'admin@admin.com')) {
         $isLoggedIn = false;
         // session_destroy();
         // header("location:login.php");
     } else {
         $isLoggedIn = true;
     }
-    if ($_SESSION['CurrentUser'] == 'admin@admin.com') {
-    	session_destroy();
-    	header("location:login.php");
-    }
-	include_once('./config.php');
+  	include_once('config.php');	
+
 ?>
 
 <html>
 	<?php include 'header.html'; ?>
 	<?php include 'navbar.html'; ?>
-<body>
+
+  <body>
     <div class="container">
 		<div class="well well-md">
 			<div class="row">
@@ -34,13 +32,16 @@
 						  <th>Purchase</th>
 						</tr>  
 							<?php
-								$key = $_POST['query'];
+								$songname = $_POST['songname'];
+								$artist = $_POST['artist'];
+								$album = $_POST['album'];
+								$genre = $_POST['genre'];
 								$query = "SELECT s.name, a.artistName, s.title, s.genre, s.length, s.price " . 
 										 "FROM song s, artist a " . 
-										 "WHERE a.id = s.artistID AND (s.name like '%" . $key . "%' " . 
-										 "OR a.artistName like '%" . $key . "%' " . 
-										 "OR s.title like '%" . $key . "%' " .
-										 "OR s.genre like '%" . $key . "%')";		
+										 "WHERE a.id = s.artistID AND s.name like '%" . $songname . "%' " . 
+										 "AND a.artistName like '%" . $artist . "%' " . 
+										 "AND s.title like '%" . $album . "%' " .
+										 "AND s.genre like '%" . $genre . "%'";		
 								$result = $mysqli->query($query);
 								while($row = $result->fetch_array())
 								{
@@ -70,10 +71,12 @@
 			  				<th>Purchase</th>
 						</tr>  
 							<?php
+								$artist = $_POST['artist'];
+								$album = $_POST['album'];
 								$query2 = "SELECT al.title, ar.artistName, al.price " . 
 										 "FROM album al, artist ar " . 
-										 "WHERE ar.id = al.artistID AND (ar.artistName like '%" . $key . "%' " . 
-										 "OR al.title like '%" . $key . "%')";	
+										 "WHERE ar.id = al.artistID AND ar.artistName like '%" . $artist . "%' " . 
+										 "AND al.title like '%" . $album . "%'";	
 								$result2 = $mysqli->query($query2);
 
 								while($row = $result2->fetch_array())

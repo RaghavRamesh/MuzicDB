@@ -1,33 +1,35 @@
 <html>
-  <?php include 'header.html'; ?>
-  <?php include 'checkSignup.php'; ?>
-  <body>
+<?php
+    include 'header.html';
+    include 'adminNavbar.html';
+    include 'useradded.php';
+?>
+<body>
+    
     <div class="container">
       <div class="row" style="margin-top:130px">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-          <form role="form" method="post" action="">
+          <form role="form" method="post">
             <fieldset>
-              <h2>Sign up for MuzicDB</h2>
+              <h2>Add User</h2>
               <hr class="colorgraph">
-              <div class="form-group">
-                <input type="text" name="name" id="name" class="form-control input-lg" placeholder="Name">
+                <div class="form-group">
+                <input type="text" name="username" id="username" class="form-control input-lg" placeholder="User Name">
               </div>
+              <div class="form-group">
               <div class="form-group">
                 <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
               </div>
               <div class="form-group">
                 <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
               </div>
-              <div class="form-group">
-                <input type="password" name="passwordconf" id="passwordconf" class="form-control input-lg" placeholder="Confirm Password">
-              </div>
-              <div>
-                <label style="color:white"><h4><?php echo $message; ?></h4></label>                
-              </div>
               <hr class="colorgraph">
+              <div>
+                    <label><h4 style="color:white"><?php echo $message; ?></h4></label>                
+              </div>
               <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                  <input type="submit" class="btn btn-lg btn-success btn-block" value="Sign Up" name="SubmitSignup">
+                  <input type="submit" class="btn btn-lg btn-success btn-block" value="Add User" name="SubmitAddUser">
                 </div>
               </div>
             </fieldset>
@@ -36,6 +38,7 @@
       </div>
 
     </div>
-    <?php include 'footer.html'; ?>
-  </body>
+
+</body>
+<?php include 'footer.html'; ?>
 </html>

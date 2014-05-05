@@ -1,48 +1,52 @@
 <?php
     session_start();
-    if (!isset($_SESSION['CurrentUser'])) {
-        header("location:login.php");
+    if (!(isset($_SESSION['CurrentUser']) && $_SESSION['CurrentUser'] != 'admin@admin.com')) {
+        $isLoggedIn = false;
+        // session_destroy();
+        // header("location:login.php");
+    } else {
+        $isLoggedIn = true;
     }
+	  include_once('config.php');
 ?>
 <html>
   <?php include 'header.html'; ?>
   <?php include 'navbar.html'; ?>
   <body>
-    <div>
-      <!-- Main component for a primary marketing message or call to action -->
-      <table class="table table-striped table-bordered table-condensed">
-        <tr>
-          <th>Album</th>
-          <th>Artist</th>
-            <?php
-                if(isset($_SESSION['CurrentUser'])) {
-                    echo "<th>Purchase</th></tr>";
-                }
-            ?>
-        </tr>    
-        <tr>
-          <td>True</td>
-          <td>Avicii</td>
-          <td><a href="bought.php?type=album&name=True&artist=Avicii">Buy me!</a></td>
-        </tr><!-- Table Row -->
-        <tr class='even'>
-          <td>Islands</td>
-          <td>Ludovico Einaudi</td>
-          <td><a href="bought.php?type=album&name=Islands&artist=Ludovico+Einaudi">Buy me!</a></td>
-        </tr><!-- Darker Table Row -->
+    <div class = "container">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Albums</h3>
+			</div>
+		  <!-- Main component for a primary marketing message or call to action -->
+		  <table class="table table-hover table-striped table-bordered table-condensed">
+		    <tr>
+		      <th>Album</th>
+		      <th>Artist</th>
+		      <th>Price</th>
+			  <th>Purchase</th>
+		    </tr>
+		
+			  <?php
+					$query = "SELECT * FROM album";
+					$result = $mysqli->query($query);
 
-        <tr>
-          <td>Piano Masterpieces</td>
-          <td>Beethoven</td><td><a href="bought.php?type=album&name=Piano+Masterpieces&artist=Beethoven">Buy me!</a></td>
-        </tr><!-- Table Row -->
-        
-        <tr class='even'>
-          <td>Verities and Balderdash</td>
-          <td>Harry Chaplin</td>
-          <td><a href="bought.php?type=album&name=Verities+and+Balderdash&artist=Harry+Chaplin">Buy me!</a></td>
-        </tr><!-- Darker Table Row -->
-      </table>
-    </div> <!-- /container -->
+					while($row = $result->fetch_array())
+					{
+						echo "<tr>";
+						echo "<td>" . $row['title'] . "</td>";
+						$query = "SELECT artistName FROM artist WHERE id =" . $row['artistID'] ;
+						$artist_result = $mysqli->query($query);
+						$artist_data = $artist_result->fetch_array();
+						echo "<td>" . $artist_data['artistName'] . "</td>";
+		        		echo "<td> $" . $row['price'] . "</td>";
+		           		echo "<td><a href=\"bought.php?type=album&name=" . $row['title'] . "&artistID=" . $row['artistID'] . "&price=" . $row['price'] . "\"><button class=\"btn btn-md btn-success\">Buy</button></a></td>";   
+						echo "</tr>";
+					}
+		  ?>    
+		  </table>
+		</div>
+	</div> 
   </body>
-      <?php include 'footer.html'; ?>
+  <?php include 'footer.html'; ?>
 </html>
